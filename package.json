@@ -1,0 +1,20 @@
+{
+  "name": "servers",
+  "version": "1.0.0",
+  "description": "My web app",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index.js",
+    "test": "jest",
+    "dev":"nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "jest": "^24.1.0",
+    "multer": "^1.4.1",
+    "supertest": "^3.4.2"
+  }
+}

@@ -1,0 +1,5 @@
+applications:
+- name: app-xptx22
+  random-route: true
+  memory: 64M
+  disk_quota: 512M

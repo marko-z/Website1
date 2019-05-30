@@ -1,0 +1,6 @@
+1. IP address: he client accesses the intex.html, and is served js files. When interacting with the website, the very same js file sends requests to the server. In this js file, a reference must be made to the address of the server. The beginner approach is to simply state localhost address, but we want to make server accessible from remote clients, meaning that the server will have to send a js file which contains the IP address of the server.
+
+2. Accessing index.html: I presume that the current solution ""app.use('/', express.static('public/'));"" works just because the default when accessing https://serverip:port/ is to serve the file index.html. We need to find a more robust way of serving files.
+- A solution to this is using res.render(index)  
+
+3. Difference between serving static files and REST requests: serving static files doesn't require REST methods like GET, POST, PUT, DELETE, but rather enables a folder located on the server for public access. Serving static files with express.js happens through app.use('/images',express.static(public/images)), meaning client will be able to access the content of public/images under the address /images.

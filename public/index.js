@@ -52,7 +52,8 @@ $('#userpostsnav').on('click',function() { //Might be a potential issue here, su
 
 //post-update function
 function updatePosts() {
-    $.post('http://localhost:3000/posts/get', {IDs : postIDs}, function (posts) {
+
+    $.post('/posts/get', {IDs : postIDs}, function (posts) {
         // So this will be sent as url encoded?
         // Simple circuit logic doesn't seem to function for the sent IDs. Ideally I would have IDs empty and here use something like {IDs : postIDs || ""} to prevent sending 'nothing'
         let i;
@@ -87,8 +88,10 @@ $('#createuser').on('submit', function(e) {
     
     const dataOut = $(this).serialize(); //fetching data from the form
 
+
+    //This is general template for sending data through jQuery (so simplified already), whereas functions like $.get() are predefined $.ajax calls with filled in parameters
     $.ajax({
-        url: 'http://localhost:3000/people',
+        url: '/people',
         data: dataOut,
         method: "POST",
         success: function(){
@@ -117,7 +120,7 @@ $('#newpost').on('submit', function(e) {
     //where $('#userimage')[0].files[0] would also work. Standard js equivalent: element.files[0]
 
     $.ajax({
-        url: "http://localhost:3000/posts",
+        url: "/posts",
         method: "POST",
         data: dataOut,
         enctype: "multipart/form-data",
@@ -147,7 +150,7 @@ $('#closebutton').on('click', function() {
 //Listing current users and user deletion functionality for admin
 $('#currentusersnav').on('click', function() {
     pageChange('currentusers',allIDs)
-    $.get('http://localhost:3000/people', function(dataIn) {
+    $.get('/people', function(dataIn) {
 
          // Could perhaps have employed the same "post method" as with posts to repeat sending the same information over and over again but the task specifies 
         $('tbody').html('');
@@ -179,7 +182,7 @@ $('#currentusersnav').on('click', function() {
 //Deleting user function
 function deleteUser(username) {
     $.ajax({
-        url: "http://localhost:3000/people/"+username,
+        url: "/people/"+username,
         method: "DELETE",
         succes: function() {
             alert('User '+currentUser.username+' deleted!');
@@ -198,7 +201,7 @@ $('#adminbutton').on('click', function() {
 
 //User Change (Other than Admin)
 $('#changeusernav').on('click', function() {
-    $.get('http://localhost:3000/people', function(dataIn) {
+    $.get('/people', function(dataIn) {
 
         $('#userchangelist').html(''); // Could perhaps have employed the same "post method" as with posts to repeat sending the same information over and over again but the task specifies 
 

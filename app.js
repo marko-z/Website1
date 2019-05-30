@@ -60,6 +60,8 @@ let posts = [
     }
 ]
 
+//The code below already fixed by the default behaviour whena accessing http://server/
+
 //index (not really important here is it?)
 // app.get('/', function(req,res) {
 //     res.sendFile(path.join(__dirname,'/index.html')); //path.join very important
